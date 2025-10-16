@@ -1,0 +1,3 @@
+Nested <Series /> with <Series.Sequence /> where premountFor is set causes a bug where sequences don't get rendered after the first outer series.
+
+In this repro, you can observe that removing the premountFor prop on line 20 and line 23 causes the subsequent sequences to render.
