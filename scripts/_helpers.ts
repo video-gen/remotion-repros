@@ -1,4 +1,6 @@
 import { execSync } from "child_process";
+import fs from "fs";
+import archiver from "archiver";
 
 export const getArgs = (): Record<string, string> => {
   return Object.fromEntries(
@@ -25,4 +27,22 @@ export const getAvailableCompositionIds = (): string[] => {
     )
     .map((line) => line.split(/\s+/)[0])
     .filter((name) => name && name.length > 0);
+};
+
+export const zipFolder = async ({ sourceDir, outPath }: { sourceDir: string; outPath: string }) => {
+  return new Promise<void>((resolve, reject) => {
+    const output = fs.createWriteStream(outPath);
+    const archive = archiver("zip", { zlib: { level: 9 } }); // Best compression
+
+    output.on("close", () => {
+      console.log(`✅ Zipped ${sourceDir} → ${outPath} (${archive.pointer()} total bytes)`);
+      resolve();
+    });
+
+    archive.on("error", (err) => reject(err));
+
+    archive.pipe(output);
+    archive.directory(sourceDir, false); // 'false' = omit the parent folder
+    archive.finalize();
+  });
 };

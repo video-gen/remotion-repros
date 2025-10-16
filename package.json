@@ -19,6 +19,7 @@
   "devDependencies": {
     "@eslint/js": "^9.37.0",
     "@remotion/cli": "^4.0.356",
+    "@types/archiver": "^6.0.3",
     "@types/node": "^24.8.0",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
@@ -43,6 +44,7 @@
     "typescript-eslint": "^8.46.1"
   },
   "dependencies": {
+    "@remotion/media": "4.0.356",
     "remotion": "^4.0.356"
   },
   "lint-staged": {

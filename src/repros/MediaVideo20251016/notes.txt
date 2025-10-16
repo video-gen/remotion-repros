@@ -1,0 +1,24 @@
+Unable to render our library assets using the new @remotion/media Video component.
+
+Example src:
+https://library.videogen.io/pexels-video-20768221-primary-w960-h540.mp4#t=5.1,10.2
+
+Error: Command failed with exit code 234: /Users/jasonyang/remotion-repros/node_modules/@remotion/compositor-darwin-arm64/ffmpeg -hide_banner -i /var/folders/h_/72zpj0q11ng6v3cbbzf1nf_c0000gn/T/remotion-v4.0.363-assetsmcbac4vtbr/remotion-inline-audio-mixing/8246745525147474.wav -ac 2 -filter:a asetrate=48000*undefined,aresample=48000,atempo=1/undefined -c:a pcm_s16le -ar 48000 -y /var/folders/h_/72zpj0q11ng6v3cbbzf1nf_c0000gn/T/remotion-v4.0.363-assetsmcbac4vtbr/remotion-inline-audio-mixing/8246745525147474-tmp.wav
+[wav @ 0x13e8065f0] Packet corrupt (stream = 0, dts = NOPTS).
+[wav @ 0x13e8065f0] Estimating duration from bitrate, this may be inaccurate
+[aist#0:0/pcm_s16le @ 0x13ec04080] Guessed Channel Layout: stereo
+Input #0, wav, from '/var/folders/h_/72zpj0q11ng6v3cbbzf1nf_c0000gn/T/remotion-v4.0.363-assetsmcbac4vtbr/remotion-inline-audio-mixing/8246745525147474.wav':
+  Duration: 00:00:00.97, bitrate: 1536 kb/s
+  Stream #0:0: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 48000 Hz, stereo, s16, 1536 kb/s
+[Parsed_asetrate_0 @ 0x13e807240] [Eval @ 0x16f80ebc0] Undefined constant or missing '(' in 'undefined'
+[Parsed_asetrate_0 @ 0x13e807240] Unable to parse option value "48000*undefined"
+Error applying option 'sample_rate' to filter 'asetrate': Invalid argument
+Error opening output file /var/folders/h_/72zpj0q11ng6v3cbbzf1nf_c0000gn/T/remotion-v4.0.363-assetsmcbac4vtbr/remotion-inline-audio-mixing/8246745525147474-tmp.wav.
+Error opening output files: Invalid argument
+    at makeError (/Users/jasonyang/remotion-repros/node_modules/execa/lib/error.js:60:11)
+    at handlePromise (/Users/jasonyang/remotion-repros/node_modules/execa/index.js:118:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async applyToneFrequencyUsingFfmpeg (/Users/jasonyang/remotion-repros/node_modules/@remotion/renderer/dist/assets/apply-tone-frequency.js:31:5)
+    at async Object.finish (/Users/jasonyang/remotion-repros/node_modules/@remotion/renderer/dist/assets/inline-audio-mixing.js:115:17)
+    at async createAudio (/Users/jasonyang/remotion-repros/node_modules/@remotion/renderer/dist/create-audio.js:67:5)
+    at async innerStitchFramesToVideo (/Users/jasonyang/remotion-repros/node_modules/@remotion/renderer/dist/stitch-frames-to-video.js:120:11)

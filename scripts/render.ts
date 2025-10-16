@@ -1,7 +1,7 @@
 import { execSync } from "child_process";
 import path from "path";
 import fs from "fs";
-import { getArgs, getAvailableCompositionIds } from "./_helpers";
+import { getArgs, getAvailableCompositionIds, zipFolder } from "./_helpers";
 
 const render = async () => {
   const args = getArgs();
@@ -23,27 +23,7 @@ const render = async () => {
     process.exit(1);
   }
 
-  execSync(
-    `npx remotion render src/index.ts --compositionId=${args.compositionId} --log=verbose --repro`,
-    {
-      stdio: "inherit",
-      shell: "/bin/bash",
-    },
-  );
-
   const rootDir = path.join(__dirname, "..");
-
-  const zipFileName = fs
-    .readdirSync(rootDir)
-    .find(
-      (file) => file.endsWith(".zip") && file.startsWith(`remotion-repro-${args.compositionId}-`),
-    );
-
-  if (zipFileName == null) {
-    throw new Error("No zip file found in project root");
-  }
-
-  const reproZipOutputPath = path.join(rootDir, zipFileName);
 
   const renderResultOutputPath = path.join(rootDir, "out", `${args.compositionId}.mp4`);
 
@@ -63,9 +43,42 @@ const render = async () => {
     "render.mp4",
   );
 
-  fs.renameSync(renderResultOutputPath, renderResultDestinationPath);
+  try {
+    execSync(`npx remotion render src/index.ts ${args.compositionId} --log=verbose --repro`, {
+      stdio: "inherit",
+      shell: "/bin/bash",
+    });
 
-  fs.renameSync(reproZipOutputPath, reproZipDestinationPath);
+    const zipFileName = fs
+      .readdirSync(rootDir)
+      .find(
+        (file) => file.endsWith(".zip") && file.startsWith(`remotion-repro-${args.compositionId}-`),
+      );
+
+    if (zipFileName == null) {
+      throw new Error("No zip file found in project root");
+    }
+
+    const reproZipOutputPath = path.join(rootDir, zipFileName);
+
+    fs.renameSync(renderResultOutputPath, renderResultDestinationPath);
+
+    fs.renameSync(reproZipOutputPath, reproZipDestinationPath);
+  } catch {
+    const pendingRemotionReproPath = path.join(rootDir, ".remotionrepro");
+
+    await zipFolder({ sourceDir: pendingRemotionReproPath, outPath: reproZipDestinationPath });
+
+    if (fs.existsSync(renderResultDestinationPath)) {
+      fs.rmSync(renderResultDestinationPath);
+    }
+
+    if (fs.existsSync(pendingRemotionReproPath)) {
+      fs.rmSync(pendingRemotionReproPath, { recursive: true });
+    }
+
+    process.exit(1);
+  }
 };
 
 render();
