@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "@remotion/media": "4.0.356",
-    "remotion": "^4.0.356"
+    "remotion": "4.0.356"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
