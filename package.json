@@ -3,14 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "preview": "remotion preview --root=src --entry-point=src/Root.tsx",
-    "render": "remotion render --composition=Main --entry-point=src/Root.tsx out/video.mp4",
-    "render:png": "remotion render --composition=Main --entry-point=src/Root.tsx --sequence --image-format=png out/frames",
+    "studio": "npx remotion studio",
+    "render": "npx tsx scripts/render.ts",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix && prettier --write .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "prepare": "husky"
+    "prepare": "husky",
+    "typecheck": "tsc --noEmit"
   },
   "keywords": [],
   "author": "",
@@ -18,6 +18,8 @@
   "description": "",
   "devDependencies": {
     "@eslint/js": "^9.37.0",
+    "@remotion/cli": "^4.0.356",
+    "@types/node": "^24.8.0",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
     "@typescript-eslint/eslint-plugin": "^8.46.1",
@@ -36,6 +38,7 @@
     "prettier": "^3.6.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "tsx": "^4.20.6",
     "typescript": "^5.6.3",
     "typescript-eslint": "^8.46.1"
   },
