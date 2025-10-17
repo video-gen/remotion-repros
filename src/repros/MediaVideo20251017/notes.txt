@@ -1,0 +1,14 @@
+Unable to render one of our getty assets using the new @remotion/media Video component.
+
+Example src:
+https://delivery.gettyimages.com/downloads/466160456?k=20&e=8Wn43_lhno-SA07UetF0GL3UrqTIH6-WLEpnr8TByO7UkrweH6B3KpzV-TjJUi8O1e9MERzJ68rTPqWIzZ1QH0Jne3t73xm9yKg-NoWo2UgVIaF9q3KJCrLOtO0nWyiB
+ 
+RangeError  Tried reading [3514, 3518), but slice is [3461, 3515). This is likely an internal error, please report it alongside the file that caused it.
+
+at node_modules/mediabunny/dist/modules/src/reader.js:119
+117 │ }
+118 │ const checkIsInRange = (slice, bytesToRead) => {
+119 │     if (slice.filePos < slice.start || slice.filePos + bytesToRead > slice.end) {
+120 │         throw new RangeError(`Tried reading [${slice.filePos}, ${slice.filePos + bytesToRead}), but slice is`
+121 │             + ` [${slice.start}, ${slice.end}). This is likely an internal error, please report it alongside the file`
+122 │             + ` that caused it.`);
