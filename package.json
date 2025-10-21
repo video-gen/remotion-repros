@@ -18,7 +18,7 @@
   "description": "",
   "devDependencies": {
     "@eslint/js": "^9.37.0",
-    "@remotion/cli": "^4.0.356",
+    "@remotion/cli": "4.0.356",
     "@types/archiver": "^6.0.3",
     "@types/node": "^24.8.0",
     "@types/react": "^18.2.0",
