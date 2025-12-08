@@ -1,0 +1,3 @@
+Nested <Series /> or <TransitionSeries /> with <Series.Sequence /> or <TransitionSeries.Sequence /> where the actual sequences don't respect the set premountFor property.
+
+In this repro, you can observe that although the studio indicates on the timeline that the sequences are premounted, when you observe the logs in the console, the useEffect doesn't actually fire until the first frame of the sequence, indicating that the sequence doesn't actually get premounted.
