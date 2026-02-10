@@ -1,0 +1,5 @@
+On Safari Mobile, premounting seems to mount the component but the actual logic of seeking to the time to the video optimistically does not seem to work.
+
+In this repro, on Safari mobile, you can observe that although the studio indicates the component is premounted, the video still flashes when it gets mounted regardless of how long the component was premounted for. This behavior does not occur on desktop (Chrome).
+
+Reproduced using simulator on MacOS.

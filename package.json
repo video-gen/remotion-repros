@@ -18,8 +18,8 @@
   "description": "",
   "devDependencies": {
     "@eslint/js": "^9.37.0",
-    "@remotion/cli": "4.0.375",
-    "@remotion/transitions": "4.0.375",
+    "@remotion/cli": "4.0.384",
+    "@remotion/transitions": "4.0.384",
     "@types/archiver": "^6.0.3",
     "@types/node": "^24.8.0",
     "@types/react": "^18.2.0",
@@ -45,8 +45,8 @@
     "typescript-eslint": "^8.46.1"
   },
   "dependencies": {
-    "@remotion/media": "4.0.375",
-    "remotion": "4.0.375"
+    "@remotion/media": "4.0.384",
+    "remotion": "4.0.384"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [

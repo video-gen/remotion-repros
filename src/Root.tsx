@@ -4,6 +4,7 @@ import { MediaVideo20251016 } from "./repros/MediaVideo20251016";
 import { PremountFor20251016 } from "./repros/PremountFor20251016";
 import { MediaVideo20251017 } from "./repros/MediaVideo20251017";
 import { PremountFor20251208 } from "./repros/PremountFor20251208";
+import { MobilePremount20260209 } from "./repros/MobilePremount20260209";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition {...PremountFor20251016} />
       <Composition {...MediaVideo20251017} />
       <Composition {...PremountFor20251208} />
+      <Composition {...MobilePremount20260209} />
     </>
   );
 };

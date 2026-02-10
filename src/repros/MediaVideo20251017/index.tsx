@@ -7,7 +7,14 @@ const MediaVideo20251017Component: React.FC = () => {
     <Series>
       <Series.Sequence durationInFrames={60}>
         <AbsoluteFill>
-          <MediaVideo src="https://delivery.gettyimages.com/downloads/466160456?k=20&e=8Wn43_lhno-SA07UetF0GL3UrqTIH6-WLEpnr8TByO7UkrweH6B3KpzV-TjJUi8O1e9MERzJ68rTPqWIzZ1QH0Jne3t73xm9yKg-NoWo2UgVIaF9q3KJCrLOtO0nWyiB" />
+          <MediaVideo
+            src="https://reencoded-library.videogen.io/getty/1822061465.mp4"
+            fallbackOffthreadVideoProps={{
+              onError: (error) => {
+                console.error(error);
+              },
+            }}
+          />
         </AbsoluteFill>
       </Series.Sequence>
     </Series>
